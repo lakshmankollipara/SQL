@@ -1,0 +1,41 @@
+create table stud (regno varchar(5),name char(5),age number(2),gender char(1),constraint studpk primary key(regno),constraint agecon check(age>16 and age<21),constraint gendercon check (gender IN('f','m'));
+insert into student values('&regno','&name','&age','&gender');
+update student set age='20' where age='19';
+create table emp(eno varchar(4),ename char(10),dno varchar(4),primary key(eno),foreign key(dno) references dept);-Table level
+create table emp(eno varchar(4) primary key,ename char(10) unique,dno references dept);-Column level
+create table emp(eno varchar(4) primary key,ename char(10),dno references dept on delete cascade);
+alter table stud drop studpk;
+alter table stud add primary key(regno);
+alter table add constraint fkey foreign key(dno) references dept;
+add constraint studpk primary key(regno);
+select name from stud where name like 'a%';
+'a%'-starting with a
+'____%'-names atleast with 4 letters
+'____'-names with only 4 letters
+'a%j'-names starting with a and ending with j
+
+lower/upper(lakshman)-change case
+initcap(lakshman)-initial capital
+concat('lak','man')-concatinate
+substr('lakshman',m,n)-selects n letters from m th position
+length(lakshman)-length
+instr('lakshman','a',m,n)-gives position of a of nth occurence from m
+lpad/rpad('amma',m,'*')-adds the * on left/right side and make total length m
+ltrim/rtrim('lakshman','man')-trims the string man from lakshman in left/right and display remaining
+replace('lakshman','laksh','great')-replaces laksh from lakshman with great
+select name,dname from stud,dept where stud.dno in (select dno from dept);
+select * from student order by eno asc/desc
+select dno,count(eno) from emp group by dno having count(eno)>1;
+we cannot have non-group functions or columns in select clause.can have only group and aggregate funcs in select clause. group by ignores null value
+create table stud(name char(10),age number(3,2) default 18); -total size is 3 after decimal 2 digits
+slect * from stud union select * from stud1;-intersect, minus
+create view view1 as select * from lakshman minus select * from madhav;
+select * from employee innerjoin department on employee.departmentdno=department.dno;-left join,right join,full join
+months_between('31-oct-11','31-oct-11')
+add_months('31-oct-11',2)
+next_day('31-oct-11','sun')
+last_day('20-oct-11')-laste day of that month
+round(sysdate,'year)-rounds first of the next year(if month >june),previous year(month <june)
+round(sysdate,'month')-rounds to first of  next month(if date>15),previous month(date<15)
+trunc(sysdate,'year')-rounds to first of that year
+trunc(sysdate,'month')-rounds to first of that month

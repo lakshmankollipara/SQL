@@ -1,0 +1,14 @@
+declare
+cursor c1 is select * from per3;
+emp_rec per3%rowtype;
+begin
+open c1;
+fetch c1 into emp_rec; 
+while(c1%found)
+loop 
+dbms_output.put_line(emp_rec.pno||'    '||emp_rec.pname);
+fetch c1 into emp_rec; 
+end loop;
+close c1;
+end;
+/

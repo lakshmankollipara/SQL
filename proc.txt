@@ -1,0 +1,19 @@
+create or replace procedure fac ( f in number) is 
+fact number:=1;
+i number;
+begin
+for i in 1..f
+loop
+fact:=fact*i;
+end loop; 
+dbms_output.put_line (fact);
+end;
+/
+
+
+
+
+
+
+
+
